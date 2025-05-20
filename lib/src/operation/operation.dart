@@ -72,7 +72,7 @@ class Operation {
   static Operation fromJson(Map data, {DataDecoder? dataDecoder}) {
     dataDecoder ??= _passThroughDataDecoder;
     final map = Map<String, dynamic>.from(data);
-    if (map.containsKey(Operation.insertKey)) {
+    if (map.containsKey(Operation.insertKey) || map.containsKey("insert")) {
       final data = dataDecoder(map[Operation.insertKey]);
       final dataLength = data is String ? data.length : 1;
       return Operation(
